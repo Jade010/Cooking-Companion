@@ -8,7 +8,9 @@ Welcome to my CookingCompanion repository! This is a project I created to store 
 ## How to Use
 
 ## Technologies Used
-
+ - Node.js
+ - Express.js
+ - MongoDB
 ## Installation
 
 ## Contact
