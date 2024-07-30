@@ -31,6 +31,11 @@ Welcome to my CookingCompanion repository! This is a full-stack web application 
 
 ## Usage
 
+## Future Update
+- Allow users to share their recipes to different social media platforms
+- Expand applicaton to other users
+- Host application on a platform for download
+
 ### Contact
 If you have any questions or want to talk about this project, please contact me through my [website](https://Jade010.github.io).
 
