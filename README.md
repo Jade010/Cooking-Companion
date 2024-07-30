@@ -19,9 +19,9 @@ Welcome to my CookingCompanion repository! This is a full-stack web application 
 - Responsive design
   
 ## Tech Stack
-- **Backend:**
-- **Frontend:**
-- **Database:**
+- **Backend:** ASP.NET Core
+- **Frontend:** HTML, CSS
+- **Database:** SQL Server
 
 ## Getting Started
 
