@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign Up - Cooking Companion</title>
+    <title>Sign In - Cooking Companion</title>
     <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+	 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -17,7 +17,7 @@
             background-color: #f4f4f4;
         }
 
-        .signup-container {
+        .login-container {
             background-color: white;
             padding: 20px;
             border: 1px solid #ccc;
@@ -25,24 +25,21 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             text-align: center;
             width: 300px;
-            box-sizing: border-box;
-            position: relative;
         }
 
-        .signup-container h2 {
+        .login-container h2 {
             margin-bottom: 20px;
         }
 
-        .signup-container form {
+        .login-container form {
             display: flex;
             flex-direction: column;
-            transition: transform 0.3s ease;
         }
 
         .form-group {
             position: relative;
             margin-bottom: 15px;
-            width: 100%;
+			width: calc(100% - 10px);
         }
 
         .form-group input {
@@ -53,8 +50,8 @@
             outline: none;
             font-size: 16px;
         }
-
-        .form-group input:focus {
+		
+		 .form-group input:focus {
             border-color: #38A3A5;
         }
 
@@ -76,311 +73,136 @@
             font-size: 12px;
             color: #38A3A5;
         }
-
-		 .signup-container button {
-            padding: 10px;
-            background-color: #38A3A5;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-
-        .signup-container button:hover {
-            background-color: #2E8587;
-        }
-
-        .back-arrow {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            cursor: pointer;
-            font-size: 20px;
-            display: none;
-        }
-
-        .shake {
-            animation: shake 0.3s;
-        }
-
-        @keyframes shake {
-            0%, 100% {
-                transform: translateX(0);
-            }
-            25% {
-                transform: translateX(-5px);
-            }
-            50% {
-                transform: translateX(5px);
-            }
-            75% {
-                transform: translateX(-5px);
-            }
-        }
-
-        .password-rules {
-            text-align: left;
-            font-size: 12px;
-            color: #666;
-            margin-top: -10px;
-        }
 		
-		.password-rules ul {
-			list-style-type: none;
-			padding: 0;
-			margin: 0;
-		}
-		
-		.password-rules ul li {
-			margin-bottom: 5px;
+		.password-container {
 			position: relative;
-			padding-left: 25px;
+			width: calc(100% - 20px);
 		}
 
-		.password-rules ul li .rule-icon {
-			position: absolute;
-			left: 0;
-			top: 50%;
-			transform: translateY(-50%);
-		}
-
-		.rule-icon .fa-check-circle {
-			color: green;
-		}
-
-		.rule-icon .fa-circle {
-			color: gray;
-		}
-
-		
-		.password-step {
-			position: relative;
+		.password-container input {
+			width: calc(100% - 40px);
+			padding-right: 40px;
 		}
 
 		.password-toggle-icon {
 			position: absolute;
-			right: 15px;
-			top: 7%;
-			transform: translateY(-10%);
+			right: 10px;
+			top: 50%;
+			transform: translateY(-50%);
 			cursor: pointer;
 			font-size: 18px;
 			color: #999;
 		}
-		
-        .next-button,
-        .back-button {
+
+
+        .login-container button {
             padding: 10px;
             background-color: #38A3A5;
             color: white;
             border: none;
             border-radius: 4px;
             cursor: pointer;
-            transition: background-color 0.2s;
-            width: 100px;
-            margin: 0 auto;
         }
 
-        .next-button:hover,
-        .back-button:hover {
+        .login-container button:hover {
             background-color: #2E8587;
         }
 
-		.next-button:disabled {
-			background-color: #ccc;
-		}
-		
-		.next-button:disabled:hover {
-			background-color: #ccc;
-		}
-		
-		
-        .back-button {
-            position: absolute;
-            left: 10px;
-            top: 10px;
+        .forgot-password {
+            position: relative;
+            margin-bottom: 15px;
         }
 
-        .step-indicator {
-            position: absolute;
-            top: 10px;
-            right: 10px;
+        .forgot-password .info-circle {
+            cursor: pointer;
+            display: inline-block;
+            margin-left: 5px;
+            width: 20px;
+            height: 20px;
+            background-color: #38A3A5;
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 20px;
             font-size: 14px;
-            color: #999;
-        }
-		
-		.email-step .next-button {
-            margin-top: 15px;
+            font-weight: bold;
+            position: relative;
         }
 
-        .email-step p {
-            margin-top: 10px;
+        .forgot-password .tooltip {
+            display: none;
+            position: absolute;
+            top: -5px;
+            left: 105%;
+            background-color: #333;
+            color: #fff;
+            padding: 5px;
+            border-radius: 4px;
+            font-size: 12px;
+            width: 180px;
         }
-		
-		.signin-link {
+
+        .forgot-password:hover .tooltip {
+            display: block;
+        }
+
+        .signup-link {
             margin-top: 20px;
         }
 
-        .signin-link a {
+        .signup-link a {
             color: #38A3A5;
             text-decoration: none;
         }
 
-        .signin-link a:hover {
+        .signup-link a:hover {
             text-decoration: underline;
         }
-
-  
     </style>
 </head>
 <body>
-    <div class="signup-container">
-		<i class="fas fa-arrow-left back-arrow"></i>
-        <span class="step-indicator">Step 1 of 3</span>
-		<h2>Get Cooking!</h2>
-        <form id="signupForm">
-           <div class="form-group email-step">
-                <input type="email" id="email" name="email" placeholder=" " required>
-                <label for="email">Email Address</label>
-                <button type="button" class="next-button" id="nextButton">Next</button>
-				<div class="signin-link">
-					<p>Have an account? <a href="SignIn.html">Sign In</a></p>
-				</div>
+    <div class="login-container">
+        <h2>Sign In</h2>
+        <form id="loginForm">
+            <div class="form-group">
+                <input type="text" id="username" name="username" placeholder=" " required>
+                <label for="username">Username</label>
             </div>
-            <div class="form-group password-step" style="display: none;">
-                <input type="password" id="password" name="password" placeholder=" " required>
-                <label for="password">Password</label>
+            <div class="form-group password-container">
+				<input type="password" id="password" name="password" placeholder=" " required>
+				<label for="password">Password</label>
 				<span class="password-toggle-icon"><i class="fas fa-eye"></i></span>
-                <div class="password-rules">
-                    <p>Your password must contain:</p>
-                    <ul>
-						<li id="uppercase-rule"><span class="rule-icon"><i class="far fa-circle"></i></span> 1 Uppercase letter</li>
-						<li id="lowercase-rule"><span class="rule-icon"><i class="far fa-circle"></i></span> 1 Lowercase letter</li>
-						<li id="number-rule"><span class="rule-icon"><i class="far fa-circle"></i></span> 1 Number</li>
-						<li id="special-rule"><span class="rule-icon"><i class="far fa-circle"></i></span> 1 Special character</li>
-						<li id="length-rule"><span class="rule-icon"><i class="far fa-circle"></i></span> 10 Characters</li>
-					</ul>
-				</div>
-				<button type="button" class="next-button" id="passwordNextButton" disabled>Next</button>
+			</div>
+			<div class="forgot-password">
+                <span>Forgot password?</span>
+                <span class="info-circle">i
+                    <span class="tooltip">Username: Testing<br>Password: Tst123</span>
+                </span>
             </div>
-            <button type="button" class="back-button" id="backButton" style="display: none;"><i class="fas fa-arrow-left"></i></button>
+            <button type="submit">Login</button>
         </form>
+        <div class="signup-link">
+            <p>Don't have an account? <a href="signup.html">Sign up</a></p>
+        </div>
     </div>
-    <script>
-        const signupForm = document.getElementById('signupForm');
-        const nextButton = document.getElementById('nextButton');
-        const backArrow = document.querySelector('.back-arrow');
-        const emailStep = document.querySelector('.email-step');
-        const passwordStep = document.querySelector('.password-step');
-        const emailInput = document.getElementById('email');
-		const stepIndicator = document.querySelector(".step-indicator");
-		const passwordField = document.getElementById("password");
-		const togglePassword = document.querySelector(".password-toggle-icon i");
-		const passwordNextButton = document.getElementById('passwordNextButton');
-		
+	<script>
+    const passwordField = document.getElementById("password");
+    const togglePassword = document.querySelector(".password-toggle-icon i");
 
-        nextButton.addEventListener('click', function () {
-            if (emailInput.value === '' || !validateEmail(emailInput.value)) {
-                emailInput.classList.add('shake');
-                setTimeout(() => {
-                    emailInput.classList.remove('shake');
-                }, 300);
-            } else {
-                emailStep.style.display = 'none';
-                passwordStep.style.display = 'block';
-                nextButton.style.display = 'none';
-                backArrow.style.display = 'block';
-				stepIndicator.textContent = "Step 2 of 3";
-            }
-        });
-
-        backArrow.addEventListener('click', function () {
-            emailStep.style.display = 'block';
-            passwordStep.style.display = 'none';
-            nextButton.style.display = 'block';
-            backArrow.style.display = 'none';
-			stepIndicator.textContent = "Step 1 of 3";
-        });
-
-        function validateEmail(email) {
-            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            return re.test(email);
+    togglePassword.addEventListener("click", function () {
+        if (passwordField.type === "password") {
+            passwordField.type = "text";
+            togglePassword.classList.remove("fa-eye");
+            togglePassword.classList.add("fa-eye-slash");
+        } else {
+            passwordField.type = "password";
+            togglePassword.classList.remove("fa-eye-slash");
+            togglePassword.classList.add("fa-eye");
         }
-		
-		togglePassword.addEventListener("click", function () {
-			if (passwordField.type === "password") {
-				passwordField.type = "text";
-				togglePassword.classList.remove("fa-eye");
-				togglePassword.classList.add("fa-eye-slash");
-			} else {
-				passwordField.type = "password";
-				togglePassword.classList.remove("fa-eye-slash");
-				togglePassword.classList.add("fa-eye");
-			}
-		});
-		
-		passwordField.addEventListener("input", function () {
-			const value = passwordField.value;
-			let allValid = true;
+    });
+</script>
 
-			// Check for uppercase letter
-			const uppercaseRule = document.getElementById("uppercase-rule").querySelector(".rule-icon i");
-			if (/[A-Z]/.test(value)) {
-				uppercaseRule.classList.remove("fa-circle");
-				uppercaseRule.classList.add("fa-check-circle");
-			} else {
-				uppercaseRule.classList.remove("fa-check-circle");
-				uppercaseRule.classList.add("fa-circle");
-				allValid = false;
-			}
+	
 
-			// Check for lowercase letter
-			const lowercaseRule = document.getElementById("lowercase-rule").querySelector(".rule-icon i");
-			if (/[a-z]/.test(value)) {
-				lowercaseRule.classList.remove("fa-circle");
-				lowercaseRule.classList.add("fa-check-circle");
-			} else {
-				lowercaseRule.classList.remove("fa-check-circle");
-				lowercaseRule.classList.add("fa-circle");
-				allValid = false;
-			}
-
-			// Check for number
-			const numberRule = document.getElementById("number-rule").querySelector(".rule-icon i");
-			if (/\d/.test(value)) {
-				numberRule.classList.remove("fa-circle");
-				numberRule.classList.add("fa-check-circle");
-			} else {
-				numberRule.classList.remove("fa-check-circle");
-				numberRule.classList.add("fa-circle");
-				allValid = false;
-			}
-
-			// Check for special character
-			const specialRule = document.getElementById("special-rule").querySelector(".rule-icon i");
-			if (/[!@#$%^&*(),.?":{}|<>]/.test(value)) {
-				specialRule.classList.remove("fa-circle");
-				specialRule.classList.add("fa-check-circle");
-			} else {
-				specialRule.classList.remove("fa-check-circle");
-				specialRule.classList.add("fa-circle");
-				allValid = false;
-			}
-
-			// Check for length
-			const lengthRule = document.getElementById("length-rule").querySelector(".rule-icon i");
-			if (value.length >= 10) {
-				lengthRule.classList.remove("fa-circle");
-				lengthRule.classList.add("fa-check-circle");
-			} else {
-				lengthRule.classList.remove("fa-check-circle");
-				lengthRule.classList.add("fa-circle");
-				allValid = false;
-			}
-
-			// Enable or disable the next button based on allValid
-			passwordNextButton.disabled = !allValid;
-		});
-					
-    </script>
 </body>
 </html>
