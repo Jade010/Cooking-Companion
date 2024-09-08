@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign In - Cooking Companion</title>
     <link rel="stylesheet" href="css/styles.css">
-	 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -39,7 +39,7 @@
         .form-group {
             position: relative;
             margin-bottom: 15px;
-			width: calc(100% - 10px);
+            width: calc(100% - 10px);
         }
 
         .form-group input {
@@ -50,8 +50,8 @@
             outline: none;
             font-size: 16px;
         }
-		
-		 .form-group input:focus {
+
+        .form-group input:focus {
             border-color: #38A3A5;
         }
 
@@ -73,27 +73,26 @@
             font-size: 12px;
             color: #38A3A5;
         }
-		
-		.password-container {
-			position: relative;
-			width: calc(100% - 20px);
-		}
 
-		.password-container input {
-			width: calc(100% - 40px);
-			padding-right: 40px;
-		}
+        .password-container {
+            position: relative;
+            width: calc(100% - 20px);
+        }
 
-		.password-toggle-icon {
-			position: absolute;
-			right: 10px;
-			top: 50%;
-			transform: translateY(-50%);
-			cursor: pointer;
-			font-size: 18px;
-			color: #999;
-		}
+        .password-container input {
+            width: calc(100% - 40px);
+            padding-right: 40px;
+        }
 
+        .password-toggle-icon {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            font-size: 18px;
+            color: #999;
+        }
 
         .login-container button {
             padding: 10px;
@@ -158,22 +157,31 @@
         .signup-link a:hover {
             text-decoration: underline;
         }
+
+        .error-message {
+            color: red;
+            font-size: 12px;
+            margin-top: -10px;
+            margin-bottom: 10px;
+            display: none;
+        }
     </style>
 </head>
 <body>
     <div class="login-container">
         <h2>Sign In</h2>
-        <form id="loginForm">
+        <form id="loginForm" novalidate>
             <div class="form-group">
                 <input type="text" id="username" name="username" placeholder=" " required>
                 <label for="username">Username</label>
             </div>
             <div class="form-group password-container">
-				<input type="password" id="password" name="password" placeholder=" " required>
-				<label for="password">Password</label>
-				<span class="password-toggle-icon"><i class="fas fa-eye"></i></span>
-			</div>
-			<div class="forgot-password">
+                <input type="password" id="password" name="password" placeholder=" " required>
+                <label for="password">Password</label>
+                <span class="password-toggle-icon"><i class="fas fa-eye"></i></span>
+            </div>
+            <div class="error-message" id="error-message">*Invalid username/password</div>
+            <div class="forgot-password">
                 <span>Forgot password?</span>
                 <span class="info-circle">i
                     <span class="tooltip">Username: Testing<br>Password: Tst123</span>
@@ -185,24 +193,56 @@
             <p>Don't have an account? <a href="signup.html">Sign up</a></p>
         </div>
     </div>
-	<script>
-    const passwordField = document.getElementById("password");
-    const togglePassword = document.querySelector(".password-toggle-icon i");
+    <script>
+        const passwordField = document.getElementById("password");
+        const togglePassword = document.querySelector(".password-toggle-icon i");
+        const loginForm = document.getElementById("loginForm");
+        const usernameField = document.getElementById("username");
+        const errorMessage = document.getElementById("error-message");
 
-    togglePassword.addEventListener("click", function () {
-        if (passwordField.type === "password") {
-            passwordField.type = "text";
-            togglePassword.classList.remove("fa-eye");
-            togglePassword.classList.add("fa-eye-slash");
-        } else {
-            passwordField.type = "password";
-            togglePassword.classList.remove("fa-eye-slash");
-            togglePassword.classList.add("fa-eye");
-        }
-    });
-</script>
+        togglePassword.addEventListener("click", function () {
+            if (passwordField.type === "password") {
+                passwordField.type = "text";
+                togglePassword.classList.remove("fa-eye");
+                togglePassword.classList.add("fa-eye-slash");
+            } else {
+                passwordField.type = "password";
+                togglePassword.classList.remove("fa-eye-slash");
+                togglePassword.classList.add("fa-eye");
+            }
+        });
 
-	
+        loginForm.addEventListener("submit", function (event) {
+            event.preventDefault();
+            const username = usernameField.value;
+            const password = passwordField.value;
 
+            if (username === "Testing" && password === "Tst123") {
+                // Successful login
+                errorMessage.style.display = "none";
+                window.location.href = "dashboard.html"; // Redirect to the dashboard page
+            } else {
+                // Invalid credentials
+                errorMessage.style.display = "block";
+                usernameField.value = "";
+                passwordField.value = "";
+                usernameField.classList.add('shake');
+                passwordField.classList.add('shake');
+                setTimeout(() => {
+                    usernameField.classList.remove('shake');
+                    passwordField.classList.remove('shake');
+                }, 300);
+            }
+        });
+
+        usernameField.addEventListener("focus", function () {
+            errorMessage.style.display = "none";
+        });
+
+        passwordField.addEventListener("focus", function () {
+            errorMessage.style.display = "none";
+        });
+    </script>
 </body>
 </html>
+
